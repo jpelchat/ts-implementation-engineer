@@ -9,7 +9,13 @@ I opted for DigitalOcean because it is a simple cloud provider and Terraform pro
 
 # Future improvements
 
-- The current method of running `tailscale up` in the `user_data` script causes the Tailscale auth key to be visible in plaintext in the resulting 
+- Implement a more secure method of passing secrets to the Terraform configuration. Perhaps by leveraging HashiCorp Vault or a different cloud provider with proper secrets storage. 
+- Make the the configuration more flexible to deploy multiple droplets, and in varying regions
+
+# Best practices
+
+- See improved security measures above!
+- Store your Terraform state file in a remote location, such as an S3 bucket. Saving Terraform state files locally is risky and an easy eay to lose them.
 
 # Prerequisites 
 
