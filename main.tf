@@ -9,6 +9,8 @@ resource "digitalocean_droplet" "subnet_router" {
     #!/bin/bash
     curl -fsSL https://tailscale.com/install.sh | sh
     tailscale up --authkey="${var.ts_auth_key}" --advertise-routes="10.118.0.0/20" --ssh
+    echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.d/99-tailscale.conf
+    sysctl -p /etc/sysctl.d/99-tailscale.conf
 EOF
 
   ssh_keys = [
